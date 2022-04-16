@@ -6,7 +6,9 @@ pipeline {
        branch 'master'
      }
      steps {
-       docker.build('devxy/python_app')
+      script {
+        app = docker.build('devxy/python_app')
+      }
      }
     }
   }
