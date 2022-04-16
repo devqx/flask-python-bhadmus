@@ -26,11 +26,7 @@ pipeline {
      
     steps {
        input('deploy to production?')
-       withKubeConfig([
-        credentialsId: 'kubeconfig'
-       ]) {
-           sh 'kubectl apply -f deploy.yml'
-       }
+        sh 'kubectl apply --kubeconfig=~/.kube/config -f deploy.yml'
     }
    
    }
