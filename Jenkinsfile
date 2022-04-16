@@ -27,11 +27,13 @@ pipeline {
     steps {
        input('deploy to production?')
        milestone(1)
-       kubernetesDeploy(
-          kubeconfigId: 'kubeconfig',
-          configs: 'deploy.yml',
-          enableConfigSubstitution: true
-    )
+     
+       withKubeConfig([
+        credentialsId: 'kubeconfig',
+        serverUrl: 'https://ad2fb861-a5a1-4942-a02e-69be955047bf.vultr-k8s.com'
+       ]) {
+           sh 'kubectl apply -f deploy.yml'
+       }
     }
    
    }
