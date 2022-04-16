@@ -1,15 +1,13 @@
 pipeline {
  agent any
   stages {
-    stage("echo1"){
+    stage("build iage"){
+     when {
+       branch 'master'
+     }
      steps {
-        sh "echo Hello Paul"
+       docker.build('devxy/python_app')
      }
     }
-   stage("echo2"){
-    steps {
-      sh "echo hello again Paul"
-    }
-   }
-  } 
+  }
 }
