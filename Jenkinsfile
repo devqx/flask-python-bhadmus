@@ -22,5 +22,17 @@ pipeline {
     }
   }
    
+   stage('deploy to cluster'){
+     
+    input('deploy to production?')
+    milestone(1)
+    kubernetesDeploy(
+     kubeconfigId: 'kubeconfig',
+     configs: 'deploy.yml',
+     enableConfigSubstitution: true
+    )
+   
+   }
+   
   }
 }
