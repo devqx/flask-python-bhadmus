@@ -26,7 +26,7 @@ pipeline {
      
     steps {
        input('deploy to production?')
-        sh 'sudo kubectl apply -f deploy.yml'
+        sh 'kubectl apply -f deploy.yml'
     }
    
    }
