@@ -28,7 +28,7 @@ pipeline {
        input('deploy to production?')
        withKubeConfig([
         credentialsId: 'kubeconfig',
-        serverUrl: 'https://ad2fb861-a5a1-4942-a02e-69be955047bf.vultr-k8s.com'
+        serverUrl: 'https://ad2fb861-a5a1-4942-a02e-69be955047bf.vultr-k8s.com:6443'
        ]) {
            sh 'kubectl apply -f deploy.yml'
        }
