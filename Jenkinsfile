@@ -1,10 +1,8 @@
 pipeline {
  agent any
   stages {
-    stage("build iage"){
-     when {
-       branch 'master'
-     }
+    stage("build image"){
+    
      steps {
       script {
         app = docker.build('devxy/python_app')
