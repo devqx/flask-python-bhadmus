@@ -11,12 +11,16 @@ pipeline {
     }
    
    stage('Push image to repository'){
-    docker.withRegistry('https://registry.hub.docker.com', 'docker_login'){
-     app.push("${env.BUILD_NUMBER}")
-      app.push("latest")
-    }
+    
+    steps {
+     script {
+       docker.withRegistry('https://registry.hub.docker.com', 'docker_login'){
+       app.push("${env.BUILD_NUMBER}")
+       app.push("latest")
    }
-   
+    }
+    }
+  }
    
   }
 }
